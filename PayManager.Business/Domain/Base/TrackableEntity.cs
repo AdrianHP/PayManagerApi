@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Insurella.Business.Domain
+namespace PayManager.Business.Domain
 {
     public abstract class TrackableEntity<T> : Entity<T>, ITrackableEntity
     {

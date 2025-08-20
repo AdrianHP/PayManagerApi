@@ -1,4 +1,4 @@
-﻿using Insurella.Business.Domain;
+﻿using PayManager.Business.Domain;
 using PayManager.Business.Domain.NotMapped;
 using PayManager.Business.Enums;
 

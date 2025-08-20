@@ -1,6 +1,6 @@
 using System;
 
-namespace Insurella.Business.Domain;
+namespace PayManager.Business.Domain;
 
 public interface IEntity<T>
 {

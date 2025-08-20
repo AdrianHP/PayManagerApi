@@ -1,4 +1,4 @@
-namespace Insurella.Business.Domain;
+namespace PayManager.Business.Domain;
 
 public interface IAuditable : IEntity
 {

@@ -12,7 +12,6 @@ namespace PayManager.Business.Contracts.ApplicationService
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetAll(params string[] properties);
         TEntity Find(object id);
-        IQueryable<TEntity> FromSql(string sqlQuery);
         Task<TEntity> FindAsync(object id, params Expression<Func<TEntity, object>>[] properties);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> LastOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);

@@ -54,12 +54,6 @@ namespace PayManager.Business.Implementation.ApplicationService
             return await BaseRepository.FindAsync(id, properties);
         }
 
-
-        public IQueryable<TEntity> FromSql(string sqlQuery)
-        {
-            return BaseRepository.FromSql(sqlQuery);
-        }
-
         public virtual void Add(TEntity entity)
         {
             BaseRepository.Add(entity);

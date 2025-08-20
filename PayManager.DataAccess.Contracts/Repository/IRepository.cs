@@ -11,7 +11,6 @@ namespace PayManager.DataAccess.Contracts.Repository
         IObjectContext Context { get; }
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetAll(params string[] properties);
-        IQueryable<TEntity> FromSql(string sqlQuery);
         TEntity Find(object id);
         void Update(TEntity entity);
         void Add(TEntity entity);
