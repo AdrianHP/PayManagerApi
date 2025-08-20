@@ -1,4 +1,4 @@
-﻿using Insurella.Business.Domain;
+﻿using PayManager.Business.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;

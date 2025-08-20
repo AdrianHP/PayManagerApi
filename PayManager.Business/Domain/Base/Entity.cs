@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Insurella.Business.Domain
+namespace PayManager.Business.Domain
 {
     public class Entity<T> : IEntity<T>
     {
