@@ -86,15 +86,6 @@ SHA.sln
 applicationhost.config
 Logs
 PayManagerApi/PayManager.Presentation/.vs
-WebEssentials2015-Settings.json
-MaterializedDesign/bower_components/topeka-elements/images/splash.svg
-Insurella.Presentation.Admin/bin/
-Insurella.Presentation.Admin/obj/
 !Insurella.Presentation.Admin/DevExpress/*.dll
 /.vs
-##################################
-### Add StyleCop source code #####
-##################################
-!ExternalTools/StyleCop/v4.7/*.dll
-
 .env
