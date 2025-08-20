@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PayManager.Business.Contracts.ApplicationService
 {
-    public interface IPaymentOrderService : IApplicationService<PaymentOrder>
+    public interface IPaymentOrderApplicationService : IApplicationService<PaymentOrder>
     {
         Task<bool> CancelOrderAsync(Guid Id);
         Task<bool> PayOrderAsync(Guid Id);
