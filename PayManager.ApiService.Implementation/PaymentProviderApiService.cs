@@ -26,6 +26,8 @@ namespace PayManager.ApiService.Implementation
             var apiKey = _configuration["PaymentProviders:" + provider + ":ApiKey"];
             _httpClient.BaseAddress = new Uri(apiUrl);
             _httpClient.DefaultRequestHeaders.Add("x-api-key", apiKey);
+            if (provider == "CazaPagos" && order.Method == "Card")
+                order.Method = "CreditCard";
             var response = await _httpClient.PostAsJsonAsync($"order", order);
             var jsonString = await response.Content.ReadAsStringAsync();
             var orderResponse = JsonConvert.DeserializeObject<OrderResponse>(jsonString);

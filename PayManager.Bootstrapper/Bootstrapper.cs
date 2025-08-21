@@ -26,6 +26,7 @@ public static class Bootstrapper
         services.AddScoped<IPaymentProviderApiService, PaymentProviderApiService>(_ => new PaymentProviderApiService(
             new HttpClient(), 
             configuration));
+        services.AddScoped<IPaymentProviderSelectorService, PaymentProviderSelectorService>();
 
         services.AddScoped<IProductApplicationService, ProductApplicationService>();
         services.AddScoped<IProductRepository, ProductRepository>();

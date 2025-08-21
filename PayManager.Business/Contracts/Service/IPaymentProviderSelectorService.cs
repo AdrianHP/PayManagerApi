@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace PayManager.Business.Contracts.Service
 {
     //not stored in database
-    public interface IPaymentProviderSelector
+    public interface IPaymentProviderSelectorService
     {
         Task<string> SelectOptimalProviderAsync(PaymentMethod paymentMode, double amount);
     }

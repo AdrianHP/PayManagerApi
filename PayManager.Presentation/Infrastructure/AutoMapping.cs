@@ -26,7 +26,9 @@ namespace PayManager.Presentation.Infrastructure
                 config.CreateMap<ProductModel, Product>();
 
                 config.CreateMap<PaymentOrder, PaymentOrderDTO>();
-                config.CreateMap<PaymentOrderDTO, PaymentOrder>();
+                config.CreateMap<PaymentOrderDTO, PaymentOrder>()
+                    .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => Enum.Parse<PaymentMethod>(src.PaymentMethod)))
+                    .ForMember(dest => dest.OrderStatus, opt => opt.MapFrom(src => OrderStatus.Pending));
 
                 config.CreateMap<OrderCreateModel, PaymentOrder>();
 
@@ -35,7 +37,9 @@ namespace PayManager.Presentation.Infrastructure
                 config.CreateMap<OrderResponse, PaymentOrder>()
                    .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => Enum.Parse<PaymentMethod>(src.Method)))
                    .ForMember(dest => dest.OrderStatus, opt => opt.MapFrom(src => Enum.Parse<OrderStatus>(src.Status)))
-                   .ForMember(dest => dest.FeesAmount, opt => opt.MapFrom(src => src.Fees != null ? src.Fees.Sum(f => f.Amount) : 0.0));
+                   .ForMember(dest => dest.FeesAmount, opt => opt.MapFrom(src => src.Fees != null ? src.Fees.Sum(f => f.Amount) : 0.0))
+                   .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => src.Amount));
+
                 config.CreateMap<PaymentOrder, OrderResponse>();
 
             });
