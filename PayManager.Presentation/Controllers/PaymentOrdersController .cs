@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using PayManager.ApiService.Models;
 using PayManager.Business.Contracts.ApplicationService;
 using PayManager.Business.Domain;
 using PayManager.Business.Enums;
@@ -14,7 +16,7 @@ namespace PayManager.Presentation.Controllers
         IPaymentOrderApplicationService paymentOrderApplicationService) : BaseController
     {
         [HttpPost]
-        public async Task<ActionResult<PaymentOrderDTO>> CreateOrder([FromBody] PaymentOrderDTO model)
+        public async Task<IActionResult> CreateOrder([FromBody] PaymentOrderDTO model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -22,7 +24,8 @@ namespace PayManager.Presentation.Controllers
             var entity = Mapper.Map<PaymentOrder>(model);
             var products = Mapper.Map<List<Product>>(model.Products);
             var order = await paymentOrderApplicationService.CreateOrder(entity,products);
-            return CreatedAtAction(nameof(PaymentOrder), new { orderId = order.OrderId }, order);
+
+            return Ok(order);
         }
     }
 }

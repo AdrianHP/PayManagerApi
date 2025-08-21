@@ -13,7 +13,7 @@ namespace PayManager.ApiService.Models
         public string OrderId { get; set; }
 
         [JsonProperty("amount")]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
