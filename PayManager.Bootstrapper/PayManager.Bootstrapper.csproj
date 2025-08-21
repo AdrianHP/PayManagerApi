@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PayManager.ApiService.Implementation\PayManager.ApiService.Implementation.csproj" />
+    <ProjectReference Include="..\PayManager.ApiService\PayManager.ApiService.csproj" />
     <ProjectReference Include="..\PayManager.Business.Implementation\PayManager.Business.Implementation.csproj" />
     <ProjectReference Include="..\PayManager.Business\PayManager.Business.csproj" />
     <ProjectReference Include="..\PayManager.DataAccess.Contracts\PayManager.DataAccess.Contracts.csproj" />

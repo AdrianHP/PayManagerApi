@@ -5,6 +5,7 @@ using PayManager.Business.Contracts.Service;
 using PayManager.Business.Implementation.Service;
 using PayManager.DataAccess.Contracts;
 using PayManager.DataAccess.Implementation.DBContext;
+using PayManager.Presentation.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,7 @@ services.AddAutoMapper(typeof(Program));
 var mapperConfiguration = new MapperConfiguration(_ => { });
 var mapper = mapperConfiguration.CreateMapper();
 services.AddSingleton(mapper);
+AutoMapping.BuildMappings();
 
 
 

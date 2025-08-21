@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayManager.DataAccess.Imple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayManager.Bootstrapper", "PayManager.Bootstrapper\PayManager.Bootstrapper.csproj", "{572BF605-B596-40E5-B7C5-B12DF3DA9221}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayManager.ApiService", "PayManager.ApiService\PayManager.ApiService.csproj", "{42D22A8B-0EF1-4638-8139-4ED3243BDF01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayManager.ApiService.Implementation", "PayManager.ApiService.Implementation\PayManager.ApiService.Implementation.csproj", "{9C072E9C-E82C-48B9-899B-AC3E9C51CD56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{572BF605-B596-40E5-B7C5-B12DF3DA9221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572BF605-B596-40E5-B7C5-B12DF3DA9221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572BF605-B596-40E5-B7C5-B12DF3DA9221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D22A8B-0EF1-4638-8139-4ED3243BDF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D22A8B-0EF1-4638-8139-4ED3243BDF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D22A8B-0EF1-4638-8139-4ED3243BDF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D22A8B-0EF1-4638-8139-4ED3243BDF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C072E9C-E82C-48B9-899B-AC3E9C51CD56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C072E9C-E82C-48B9-899B-AC3E9C51CD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C072E9C-E82C-48B9-899B-AC3E9C51CD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C072E9C-E82C-48B9-899B-AC3E9C51CD56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

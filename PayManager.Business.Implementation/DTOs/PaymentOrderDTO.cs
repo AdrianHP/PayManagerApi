@@ -10,12 +10,12 @@ namespace PayManager.Business.Implementation.DTOs
 {
     public class PaymentOrderDTO
     {
-        public decimal Amount { get; set; }
+        public double? Amount { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-        public string ProviderName { get; set; }
-        public string ProviderOrderId { get; set; }
-        public OrderStatus OrderStatus { get; set; }
-        public decimal FeesAmount { get; set; }
-        public ICollection<ProductDTO> Products { get; set; }
+        public string? ProviderName { get; set; }
+        public string? ProviderOrderId { get; set; }
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Created;
+        public double? FeesAmount { get; set; }
+        public ICollection<ProductDTO> Products { get; set; } = [];
     }
 }

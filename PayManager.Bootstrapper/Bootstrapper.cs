@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PayManager.ApiService;
+using PayManager.ApiService.Implementation;
 using PayManager.Business.Contracts.ApplicationService;
 using PayManager.Business.Contracts.Service;
 using PayManager.Business.Implementation.ApplicationService;
@@ -21,13 +23,15 @@ public static class Bootstrapper
 	{
 		services.AddSingleton(configuration);
 
+        services.AddScoped<IPaymentProviderApiService, PaymentProviderApiService>(_ => new PaymentProviderApiService(
+            new HttpClient(), 
+            configuration));
 
-        services.AddScoped<IPaymentProviderSelector, PaymentProviderSelector>(_ => new PaymentProviderSelector(
-            configuration["PaymentProviders"]));
-
+        services.AddScoped<IProductApplicationService, ProductApplicationService>();
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IOrderProductApplicationService, OrderProductApplicationService>();
+        services.AddScoped<IOrderProductRepository, OrderProductRepository>();
         services.AddScoped<IPaymentOrderRepository, PaymentOrderRepository>();
-        services.AddScoped<IProductApplicationService,ProductApplicationService>();
         services.AddScoped<IPaymentOrderApplicationService, PaymentOrderApplicationService>();
     }
 }
