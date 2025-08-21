@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PayManager.Business.Implementation.DTOs
+namespace PayManager.ApiService.Models
 {
-    public class ProductDTO
+    public class ProductModel
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public double UnitPrice { get; set; }
-        public bool IsActive { get; set; }
-        public int UnitsInStock { get; set; }
     }
 }

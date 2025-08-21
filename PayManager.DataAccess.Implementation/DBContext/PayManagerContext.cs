@@ -24,6 +24,7 @@ namespace PayManager.DataAccess.Implementation.DBContext
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<PaymentOrder> PaymentOrders { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public string ConnectionString { get; private set; } = configuration.GetConnectionString("DefaultConnection");
 

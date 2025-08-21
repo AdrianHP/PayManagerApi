@@ -4,9 +4,10 @@ namespace PayManager.Business.Domain
 {
     public class Product : TrackableEntity
     {
-        public string Name { get; set; }
-        public double UnitPrice { get; set; }
-        public bool IsActive { get; set; }
-        public int UnitsInStock { get; set; }
+        public string Name { get; set; } = "";
+        public double UnitPrice { get; set; } = 0;
+        public bool IsActive { get; set; } = true;
+        public int UnitsInStock { get; set; } = 0;
+        ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

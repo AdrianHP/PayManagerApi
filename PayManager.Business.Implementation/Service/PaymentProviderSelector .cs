@@ -19,15 +19,9 @@ namespace PayManager.Business.Implementation.Service
             _configuration = configuration;
         }
 
-        public async Task<string> SelectOptimalProviderAsync(PaymentMethod paymentMode, decimal amount)
+        public async Task<string> SelectOptimalProviderAsync(PaymentMethod paymentMode, double amount)
         {
-            // AQUÍ ES DONDE IMPLEMENTARÁS TU LÓGICA DE SELECCIÓN
-            // Por ahora retorna un proveedor por defecto
-
-            // TODO: Implementar lógica para comparar fees entre proveedores
-            // y retornar el más conveniente
-
-            return "PagaFacil"; // Proveedor por defecto
+            return "PagaFacil"; 
         }
     }
 }

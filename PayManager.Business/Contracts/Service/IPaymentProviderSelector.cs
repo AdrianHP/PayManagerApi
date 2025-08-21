@@ -11,6 +11,6 @@ namespace PayManager.Business.Contracts.Service
     //not stored in database
     public interface IPaymentProviderSelector
     {
-        Task<string> SelectOptimalProviderAsync(PaymentMethod paymentMode, decimal amount);
+        Task<string> SelectOptimalProviderAsync(PaymentMethod paymentMode, double amount);
     }
 }
