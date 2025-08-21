@@ -7,8 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayManager.Bootstrapper\PayManager.Bootstrapper.csproj" />
+    <ProjectReference Include="..\PayManager.Business.Implementation\PayManager.Business.Implementation.csproj" />
+    <ProjectReference Include="..\PayManager.Business\PayManager.Business.csproj" />
+    <ProjectReference Include="..\PayManager.DataAccess.Implementation\PayManager.DataAccess.Implementation.csproj" />
   </ItemGroup>
 
 </Project>

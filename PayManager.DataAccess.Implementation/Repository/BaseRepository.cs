@@ -2,7 +2,6 @@
 using PayManager.DataAccess.Contracts;
 using PayManager.DataAccess.Contracts.Repository;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace PayManager.DataAccess.Implementation.Repository
 {
@@ -141,7 +141,7 @@ namespace PayManager.DataAccess.Implementation.Repository
 
         protected IDbConnection GetConnection()
         {
-            var connection = new NpgsqlConnection(Context.ConnectionString);
+            var connection = new SqlConnection(Context.ConnectionString);
             return connection;
         }
 
