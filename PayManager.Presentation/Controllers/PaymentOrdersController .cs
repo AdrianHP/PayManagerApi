@@ -41,14 +41,13 @@ namespace PayManager.Presentation.Controllers
                 {
                     return NotFound(new { message = "Order not found." });
                 }
-                currentEntity.OrderStatus = OrderStatus.Paid;
-                //Here you can also do this at the payment provider.
-                await paymentOrderApplicationService.UpdateAsync(currentEntity);
+               await paymentOrderApplicationService.PayOrderAsync(currentEntity);
+
                 return Ok(new { message = "Order updated successfully." });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "The order could not be updated..", error = ex.Message });
+                return StatusCode(500, new { message = "The order could not be updated.", error = ex.Message });
             }
         }
 
@@ -65,9 +64,7 @@ namespace PayManager.Presentation.Controllers
                 {
                     return NotFound(new { message = "Order not found." });
                 }
-                currentEntity.OrderStatus = OrderStatus.Cancelled;
-                //Here you can also do this at the payment provider.
-                await paymentOrderApplicationService.UpdateAsync(currentEntity);
+                await paymentOrderApplicationService.CancelOrderAsync(currentEntity);
                 return Ok(new { message = "Order deleted successfully." });
             }
             catch (Exception ex)

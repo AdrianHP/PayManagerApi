@@ -12,7 +12,7 @@ namespace PayManager.Business.Contracts.ApplicationService
     {
 
         Task <OrderResponse> CreateOrder(PaymentOrder order,IEnumerable<Product> products);
-        Task<bool> CancelOrderAsync(Guid Id);
-        Task<bool> PayOrderAsync(Guid Id);
+        Task CancelOrderAsync(PaymentOrder order);
+        Task PayOrderAsync(PaymentOrder order);
     }
 }
