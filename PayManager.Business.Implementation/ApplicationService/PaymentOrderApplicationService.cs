@@ -39,6 +39,8 @@ namespace PayManager.Business.Implementation.ApplicationService
                 orderResponse.Method = "Card";
             var orderRecord = new PaymentOrder()
             {
+                ProviderName = optimalProvider,
+                ProviderOrderId = orderResponse.OrderId,
                 PaymentMethod = Enum.Parse<PaymentMethod>(orderResponse.Method),
                 OrderStatus = Enum.Parse<OrderStatus>(orderResponse.Status),
                 FeesAmount = orderResponse.Fees != null ? orderResponse.Fees.Sum(f => f.Amount) : 0.0,
@@ -56,13 +58,17 @@ namespace PayManager.Business.Implementation.ApplicationService
 
             return orderResponse;
         }
-        public Task<bool> PayOrderAsync(Guid Id)
+        public async Task PayOrderAsync(PaymentOrder order)
         {
-            throw new NotImplementedException();
+            order.OrderStatus = OrderStatus.Paid;
+            await Repository.UpdateAsync(order);
+            await providerApiService.PayOrder(order.ProviderOrderId, order.ProviderName);
         }
-        public Task<bool> CancelOrderAsync(Guid Id)
+        public async Task CancelOrderAsync(PaymentOrder order)
         {
-            throw new NotImplementedException();
+            order.OrderStatus = OrderStatus.Cancelled;
+            await Repository.UpdateAsync(order);
+            await providerApiService.CancelOrder(order.ProviderOrderId, order.ProviderName);
         }
     }
 }

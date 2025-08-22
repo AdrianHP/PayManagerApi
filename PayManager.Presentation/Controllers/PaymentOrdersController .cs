@@ -27,5 +27,50 @@ namespace PayManager.Presentation.Controllers
 
             return Ok(order);
         }
+
+        [HttpPut("pay")]
+        public async Task<IActionResult> PayOrder([FromBody] Guid id)
+        {
+            try
+            {
+                var currentEntity = paymentOrderApplicationService
+                    .Where(po => po.Id == id)
+                    .FirstOrDefault();
+
+                if (currentEntity == null)
+                {
+                    return NotFound(new { message = "Order not found." });
+                }
+               await paymentOrderApplicationService.PayOrderAsync(currentEntity);
+
+                return Ok(new { message = "Order updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "The order could not be updated.", error = ex.Message });
+            }
+        }
+
+        [HttpPut("cancel")]
+        public async Task<IActionResult> CancelOrder([FromBody] Guid id)
+        {
+            try
+            {
+                var currentEntity = paymentOrderApplicationService
+                    .Where(po => po.Id == id)
+                    .FirstOrDefault();
+
+                if (currentEntity == null)
+                {
+                    return NotFound(new { message = "Order not found." });
+                }
+                await paymentOrderApplicationService.CancelOrderAsync(currentEntity);
+                return Ok(new { message = "Order deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "The order could not be deleted.", error = ex.Message });
+            }
+        }
     }
 }

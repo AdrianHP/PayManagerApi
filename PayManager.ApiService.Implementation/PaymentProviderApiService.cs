@@ -22,10 +22,7 @@ namespace PayManager.ApiService.Implementation
         public async Task<OrderResponse> CreateOrder(OrderCreateModel order,string provider)
         {
 
-            var apiUrl = _configuration["PaymentProviders:" + provider + ":BaseUrl"];
-            var apiKey = _configuration["PaymentProviders:" + provider + ":ApiKey"];
-            _httpClient.BaseAddress = new Uri(apiUrl);
-            _httpClient.DefaultRequestHeaders.Add("x-api-key", apiKey);
+            SetHttpClient(provider);
             if (provider == "CazaPagos" && order.Method == "Card")
                 order.Method = "CreditCard";
             var response = await _httpClient.PostAsJsonAsync($"order", order);
@@ -34,9 +31,30 @@ namespace PayManager.ApiService.Implementation
             return orderResponse;
         }
 
+        public async Task PayOrder(string orderId, string provider)
+        {
+            SetHttpClient(provider);
+            var response = await _httpClient.PutAsJsonAsync($"pay?Id="+ orderId, orderId);
+        }
+        public async Task CancelOrder(string orderId, string provider)
+        {
+            SetHttpClient(provider);
+            var response = await _httpClient.PutAsJsonAsync($"cancel?Id=" + orderId, orderId);
+        }
+
+        private void SetHttpClient(string providerName)
+        {
+            var apiUrl = _configuration["PaymentProviders:" + providerName + ":BaseUrl"];
+            var apiKey = _configuration["PaymentProviders:" + providerName + ":ApiKey"];
+            _httpClient.BaseAddress = new Uri(apiUrl);
+            _httpClient.DefaultRequestHeaders.Add("x-api-key", apiKey);
+        }
+
         public Task<IEnumerable<OrderResponse>> GetOrders()
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

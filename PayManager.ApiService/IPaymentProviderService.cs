@@ -11,5 +11,7 @@ namespace PayManager.ApiService
     {
         Task<IEnumerable<OrderResponse>> GetOrders();
         Task<OrderResponse> CreateOrder(OrderCreateModel order, string provider);
+        Task PayOrder(string orderId, string provider);
+        Task CancelOrder(string orderId, string provider);
     }
 }
