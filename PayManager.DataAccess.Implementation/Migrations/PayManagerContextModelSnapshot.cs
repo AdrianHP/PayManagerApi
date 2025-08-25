@@ -46,7 +46,7 @@ namespace PayManager.DataAccess.Implementation.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProducts", (string)null);
                 });
 
             modelBuilder.Entity("PayManager.Business.Domain.PaymentOrder", b =>
@@ -81,7 +81,7 @@ namespace PayManager.DataAccess.Implementation.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentOrders");
+                    b.ToTable("PaymentOrders", (string)null);
                 });
 
             modelBuilder.Entity("PayManager.Business.Domain.Product", b =>
@@ -111,7 +111,7 @@ namespace PayManager.DataAccess.Implementation.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("PayManager.Business.Domain.OrderProduct", b =>

@@ -25,7 +25,13 @@ namespace PayManager.Presentation.Infrastructure
                 config.CreateMap<Product, ProductModel>();
                 config.CreateMap<ProductModel, Product>();
 
-                config.CreateMap<PaymentOrder, PaymentOrderDTO>();
+                config.CreateMap<PaymentOrder, PaymentOrderDTO>()
+                    .ForMember(d => d.Products,
+                       opt => opt.MapFrom(src =>
+                           src.OrderProducts.Select(op => op.Product)))
+                    .ForMember(dest => dest.Fees, opt => opt.MapFrom(src => new  List<FeeDTO> { new FeeDTO { Name = "Sales Commision", Amount = src.FeesAmount } }))
+                    .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.GetDisplayName()))
+                    .ForMember(dest => dest.OrderStatus, opt => opt.MapFrom(src => OrderStatus.Pending));
                 config.CreateMap<PaymentOrderDTO, PaymentOrder>()
                     .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => Enum.Parse<PaymentMethod>(src.PaymentMethod)))
                     .ForMember(dest => dest.OrderStatus, opt => opt.MapFrom(src => OrderStatus.Pending));

@@ -8,6 +8,6 @@ namespace PayManager.Business.Domain
         public double UnitPrice { get; set; } = 0;
         public bool IsActive { get; set; } = true;
         public int UnitsInStock { get; set; } = 0;
-        ICollection<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }
