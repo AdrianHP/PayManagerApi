@@ -1,22 +1,16 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PayManager.ApiService.Models;
 using PayManager.Business.Contracts.ApplicationService;
 using PayManager.Business.Contracts.Service;
 using PayManager.Business.Domain;
-using PayManager.Business.Enums;
 using PayManager.Business.Implementation.DTOs;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using PayManager.Presentation.Extensions;
 
 namespace PayManager.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PaymentOrdersController (
+    public class PaymentOrdersController(
         ILinqService linqService,
         IPaymentOrderApplicationService paymentOrderApplicationService) : BaseController
     {
