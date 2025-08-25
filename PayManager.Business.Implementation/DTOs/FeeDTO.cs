@@ -9,6 +9,6 @@ namespace PayManager.Business.Implementation.DTOs
     public class FeeDTO
     {
         public string Name { get; set; }
-        public string Amount { get; set; }
+        public double Amount { get; set; }
     }
 }

@@ -1,20 +1,44 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using PayManager.ApiService.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PayManager.Business.Contracts.ApplicationService;
+using PayManager.Business.Contracts.Service;
 using PayManager.Business.Domain;
-using PayManager.Business.Enums;
 using PayManager.Business.Implementation.DTOs;
-using System.Collections.Generic;
-using System.Xml.Linq;
+using PayManager.Presentation.Extensions;
 
 namespace PayManager.Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PaymentOrdersController (
+    public class PaymentOrdersController(
+        ILinqService linqService,
         IPaymentOrderApplicationService paymentOrderApplicationService) : BaseController
     {
+
+        [HttpGet]
+        public async Task<IActionResult> Orders(Guid? id, [FromQuery] TableParamsDTO? tableParams = null)
+        {
+            if (id != null && id != default)
+            {
+                var order = await paymentOrderApplicationService
+                   .Include(o => o.OrderProducts)
+                   .ThenInclude(op => op.Product)
+                   .FirstOrDefaultAsync(order => order.Id == id);
+                var orderDTO = Mapper.Map<PaymentOrderDTO>(order);
+
+                return Json(new { Data = orderDTO });
+            }
+
+            var query = paymentOrderApplicationService
+                .Include(o => o.OrderProducts)
+                    .ThenInclude(op => op.Product);
+            var result = await linqService.PaginateAndGetData(query, tableParams.Skip, tableParams.Take)
+                .Map<PaymentOrder,PaymentOrderDTO>(Mapper);
+
+            return Json(new { Data = result.Data, Count = result.Count });
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] PaymentOrderDTO model)
         {

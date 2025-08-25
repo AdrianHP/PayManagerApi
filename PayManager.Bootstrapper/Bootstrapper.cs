@@ -22,6 +22,7 @@ public static class Bootstrapper
 		IConfiguration configuration)
 	{
 		services.AddSingleton(configuration);
+        services.AddSingleton<ILinqService, LinqService>();
 
         services.AddScoped<IPaymentProviderApiService, PaymentProviderApiService>(_ => new PaymentProviderApiService(
             new HttpClient(), 

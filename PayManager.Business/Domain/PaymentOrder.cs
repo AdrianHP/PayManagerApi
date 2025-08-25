@@ -12,6 +12,6 @@ namespace PayManager.Business.Domain
         public string? ProviderOrderId { get; set; } = "";
         public OrderStatus OrderStatus { get; set; }
         public double  FeesAmount { get; set; }
-        ICollection<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }
